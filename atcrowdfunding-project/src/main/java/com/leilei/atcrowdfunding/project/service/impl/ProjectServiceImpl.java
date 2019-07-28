@@ -11,6 +11,7 @@ import com.leilei.front.bean.*;
 import com.leilei.front.constant.AppConstant;
 import com.leilei.front.enume.ImgTypeEnume;
 import com.leilei.front.enume.ProjectStatusEnume;
+import com.leilei.front.vo.resp.ProjectAllInfoVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -185,4 +186,17 @@ public class ProjectServiceImpl implements ProjectService {
     public void tempProjectToDb(BaseVo vo) {
         saveProject(vo,ProjectStatusEnume.DRAFT);
     }
+
+    @Override
+    public List<TProject> getAllProjects() {
+        return tProjectMapper.selectByExample(null);
+    }
+
+    @Override
+    public List<ProjectAllInfoVo> getAllProjectsInfos() {
+
+        List<ProjectAllInfoVo> projectAllInfoVos = tProjectMapper.getAllProjectsInfos();
+        return projectAllInfoVos;
+    }
+
 }

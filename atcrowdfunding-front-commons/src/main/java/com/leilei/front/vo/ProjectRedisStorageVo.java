@@ -23,8 +23,8 @@ public class ProjectRedisStorageVo {
 
     private String name;//项目名称
     private String remark;//项目简介
-    private Integer money;//筹资金额
-    private Long day;//筹资天数
+    private Long money;//筹资金额
+    private Integer day;//筹资天数
     private String headerImage;//项目头部图片
     private List<String> detailsImage;//项目详情图片
     //以上的第一屏的信息

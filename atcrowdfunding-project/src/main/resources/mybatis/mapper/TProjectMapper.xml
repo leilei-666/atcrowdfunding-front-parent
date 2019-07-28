@@ -16,6 +16,12 @@
     <result column="createdate" jdbcType="CHAR" property="createdate" />
     <result column="follower" jdbcType="INTEGER" property="follower" />
   </resultMap>
+  <select id="getAllProjectsInfos" resultType="com.leilei.front.vo.resp.ProjectAllInfoVo">
+        SELECT p.*,p_i.`imgurl` FROM `t_project` p
+          LEFT JOIN `t_project_images` p_i ON p_i.`projectid`=p.`id`
+          WHERE  p_i.`imgtype`=0
+  </select>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

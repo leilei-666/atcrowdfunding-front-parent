@@ -3,6 +3,8 @@ package com.leilei.atcrowdfunding.project.mapper;
 import com.leilei.front.bean.TProject;
 import com.leilei.front.bean.TProjectExample;
 import java.util.List;
+
+import com.leilei.front.vo.resp.ProjectAllInfoVo;
 import org.apache.ibatis.annotations.Param;
 
 public interface TProjectMapper {
@@ -27,4 +29,6 @@ public interface TProjectMapper {
     int updateByPrimaryKeySelective(TProject record);
 
     int updateByPrimaryKey(TProject record);
+
+    List<ProjectAllInfoVo> getAllProjectsInfos();
 }

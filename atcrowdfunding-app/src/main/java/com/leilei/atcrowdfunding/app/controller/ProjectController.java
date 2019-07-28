@@ -5,6 +5,7 @@ import com.leilei.atcrowdfunding.app.service.feign.ProjectServiceFeign;
 import com.leilei.front.bean.TTag;
 import com.leilei.front.bean.TType;
 import com.leilei.front.common.AppResponse;
+import com.leilei.front.vo.req.BaseVo;
 import com.leilei.front.vo.req.ProjectBaseInfoVo;
 import com.leilei.front.vo.req.ProjectReturnVo;
 import com.leilei.front.vo.resp.MemberRespsonVo;
@@ -143,6 +144,14 @@ public class ProjectController {
         MemberRespsonVo loginUser = (MemberRespsonVo) session.getAttribute("loginUser");
         String accessToken = loginUser.getAccessToken();
         String projectToken = (String) session.getAttribute("projectToken");
-        return "protected/project/start-step-4";
+        BaseVo baseVo=new BaseVo();
+        baseVo.setAccessToken(accessToken);
+        baseVo.setProjectToken(projectToken);
+        AppResponse<String> submit = projectService.submit(baseVo);
+        if (submit.getCode()==0){
+            return "protected/project/start-step-4";
+
+        }
+        return "redirect:/start-step-3.html";
     }
 }

@@ -6,11 +6,13 @@ import com.leilei.front.common.AppResponse;
 import com.leilei.front.vo.req.BaseVo;
 import com.leilei.front.vo.req.ProjectBaseInfoVo;
 import com.leilei.front.vo.req.ProjectReturnVo;
+import com.leilei.front.vo.resp.ProjectAllInfoVo;
 import com.leilei.front.vo.resp.ProjectTempVo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RequestMapping("/project")
 @FeignClient(value = "ATCROWDFUNDING-PROJECT")
 public interface ProjectServiceFeign {
@@ -28,6 +30,10 @@ public interface ProjectServiceFeign {
 
     @PostMapping("/create/return")
     public AppResponse<String> addReturn(@RequestBody List<ProjectReturnVo> returns);
+
     @PostMapping("/create/submit")
-    public AppResponse<String> submit(@RequestBody  BaseVo vo);
+    public AppResponse<String> submit(@RequestBody BaseVo vo);
+
+    @GetMapping("/all/index")
+    public AppResponse<List<ProjectAllInfoVo>> getAllIndex();
 }
