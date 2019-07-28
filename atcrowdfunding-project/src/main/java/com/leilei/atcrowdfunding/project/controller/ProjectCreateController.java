@@ -116,7 +116,7 @@ public class ProjectCreateController {
 
     @ApiOperation("项目提交审核申请")
     @PostMapping("/submit")
-    public AppResponse<String> submit(BaseVo vo){
+    public AppResponse<String> submit(@RequestBody BaseVo vo){
         projectService.submitProjectToDb(vo);
         return AppResponse.success("");
     }

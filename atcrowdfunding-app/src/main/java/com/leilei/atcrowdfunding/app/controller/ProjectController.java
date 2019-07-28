@@ -138,7 +138,11 @@ public class ProjectController {
         第4步，确认信息跳到确认信息
      */
     @RequestMapping("/start-step-4.html")
-    public String start_step_4() {
+    public String start_step_4(HttpSession session)
+    {
+        MemberRespsonVo loginUser = (MemberRespsonVo) session.getAttribute("loginUser");
+        String accessToken = loginUser.getAccessToken();
+        String projectToken = (String) session.getAttribute("projectToken");
         return "protected/project/start-step-4";
     }
 }
